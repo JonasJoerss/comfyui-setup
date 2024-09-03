@@ -56,6 +56,16 @@ if [ ! -f "lora.safetensors" ]; then
     wget -b -q https://huggingface.co/XLabs-AI/flux-RealismLora/resolve/main/lora.safetensors
 fi
 
+# controlnet
+if [ ! -d "/workspace/ComfyUI/models/controlnet/" ]; then
+    mkdir -p /workspace/ComfyUI/models/controlnet/
+fi
+
+cd /workspace/ComfyUI/models/controlnet/
+if [ ! -f "diffusion_pytorch_model.safetensors" ]; then
+    wget -b -q https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Union/resolve/main/diffusion_pytorch_model.safetensors
+fi
+
 # ultralytics/bbox
 if [ ! -d "/workspace/ComfyUI/models/ultralytics/bbox/" ]; then
     mkdir -p /workspace/ComfyUI/models/ultralytics/bbox/
@@ -112,6 +122,9 @@ git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git
 git clone https://github.com/kijai/ComfyUI-Florence2.git
 git clone https://github.com/KoreTeknology/ComfyUI-Universal-Styler.git
 git clone https://github.com/un-seen/comfyui-tensorops.git
+git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git
+git clone https://github.com/chrisgoringe/cg-use-everywhere.git
+git clone https://github.com/EeroHeikkinen/ComfyUI-eesahesNodes.git
 python comfyui-reactor-node/install.py
 
 BASE_DIR="/workspace/ComfyUI/custom_nodes/"
